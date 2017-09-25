@@ -42,7 +42,7 @@ def senmail(c):
 def dump():
     n=0
     for i in get_dbname():
-        sqlcmd="mysqldump -u" +user +' '+ "-h"+host +' '+"--single-transaction"+' '+'-p'+passwd +' '+i +' ' "|" "gzip"  +' ' +'>'+ tm+'/'+i +'_'"$(date +%F).sql.gz"
+        sqlcmd="mysqldump -u" +user +' '+ "-h"+host +' '+"--single-transaction"+' '+"--master-data=2" +' '+'-p'+passwd +' '+i +' ' "|" "gzip"  +' ' +'>'+ tm+'/'+i +'_'"$(date +%F).sql.gz"
         starttime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         ret= os.system(sqlcmd)
         a=lambda x:'succeed'if ret ==0 else 'false'
