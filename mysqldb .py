@@ -73,6 +73,6 @@ def action():
         copy2(path,tm)
 if __name__ == '__main__':
     create()
-    flushlog()
     senmail(dump())
+    flushlog()
     action()
